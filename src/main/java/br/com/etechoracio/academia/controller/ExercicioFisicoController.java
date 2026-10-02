@@ -34,4 +34,6 @@ public class ExercicioFisicoController {
 
         return ResponseEntity.notFound().build();
     }
+
+
 }

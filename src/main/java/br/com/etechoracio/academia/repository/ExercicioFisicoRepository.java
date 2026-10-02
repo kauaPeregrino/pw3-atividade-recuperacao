@@ -11,4 +11,5 @@ public interface ExercicioFisicoRepository extends JpaRepository<ExercicioFisico
     List<ExercicioFisico> findByAprovadoTrue();
 
     Optional<ExercicioFisico> findByIdAndAprovadoTrue(Long id);
+
 }

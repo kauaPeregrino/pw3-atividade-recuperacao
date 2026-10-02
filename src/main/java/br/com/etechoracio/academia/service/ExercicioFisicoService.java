@@ -27,4 +27,6 @@ public class ExercicioFisicoService {
         return exercicioFisicoRepository.findByIdAndAprovadoTrue(id)
                 .map(exercicio -> exercicioFisicoMapper.toResponseDTO(exercicio));
     }
+
+
 }
