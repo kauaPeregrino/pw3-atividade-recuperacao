@@ -36,4 +36,16 @@ public class ExercicioFisicoService {
         return exercicioFisicoMapper.toResponseDTO(result);
     }
 
+    public Optional<ExercicioFisicoResponseDto> aprovar(Long id) {
+        var result = exercicioFisicoRepository.findById(id);
+        if (result.isEmpty()) {
+            return Optional.empty();
+        }
+
+        var exercicioFisico = result.get();
+        exercicioFisico.setAprovado(true);
+        var exercicioAprovado = exercicioFisicoRepository.save(exercicioFisico);
+        return Optional.of(exercicioFisicoMapper.toResponseDTO(exercicioAprovado));
+    }
+
 }
