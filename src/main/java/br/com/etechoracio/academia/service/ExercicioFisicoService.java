@@ -1,5 +1,6 @@
 package br.com.etechoracio.academia.service;
 
+import br.com.etechoracio.academia.dto.ExercicioFisicoRequestDto;
 import br.com.etechoracio.academia.dto.ExercicioFisicoResponseDto;
 import br.com.etechoracio.academia.mapper.ExercicioFisicoMapper;
 import br.com.etechoracio.academia.repository.ExercicioFisicoRepository;
@@ -28,5 +29,11 @@ public class ExercicioFisicoService {
                 .map(exercicio -> exercicioFisicoMapper.toResponseDTO(exercicio));
     }
 
+    public ExercicioFisicoResponseDto save(ExercicioFisicoRequestDto dto) {
+        var exercicioFisico = exercicioFisicoMapper.toEntity(dto);
+        exercicioFisico.setAprovado(false);
+        var result = exercicioFisicoRepository.save(exercicioFisico);
+        return exercicioFisicoMapper.toResponseDTO(result);
+    }
 
 }
